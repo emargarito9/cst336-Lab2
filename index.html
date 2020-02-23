@@ -3,16 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>US Quiz</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script> 
+    <style> 
+           @import url("css/style.css");
+    </style>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script> 
 
   <script>
   	$(document).ready(function(){
       /*global $*/
         //Global Variables
   		var score = 0;
+  		var perf = 0;
   		var attempts = localStorage.getItem("timesQuizTaken");//first time assigns value of 0
 
         //event Listeners
@@ -137,15 +142,17 @@
            wrongAnswer(8);
         }   
     
-    	$("#totalScore").html(`Total Score: ${score}`);            
-    
+    	$("#totalScore").html(`Total Score: ${score}`); 
+    	if(score == 100){
+            $("#perfect").html(`You got a Perfect Score!`);  
+    	}
     }
 
 })//ready
   </script>
 
 </head>
-<body class="text-center">
+<body background-color="blue" class="text-center">
 <br><br>
 
 	<h1 class="jumbotron" style="background-color: white; padding:0"> US Geography Quiz </h1>
@@ -224,6 +231,7 @@
 	<button class="btn btn-outline-success"> Submit Quiz </button>
 	<br><br>
     <h2 id="totalScore" class="text-info"></h2>
+    <h1 id="perfect" class="text-info"></h1>
     <h3 id="attempts"></h3>
 
 </body>
